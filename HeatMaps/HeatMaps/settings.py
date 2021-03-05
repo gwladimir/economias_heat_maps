@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'OPTIONS': {
-            'options': '-c search_path=limites,public'
+            'options': '-c search_path=limites,elecciones,censo10,public'
         },
         'NAME': 'ecuadordb',
         'USER': 'usuario',

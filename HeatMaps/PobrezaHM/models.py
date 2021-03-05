@@ -25,43 +25,6 @@ class Cantones(models.Model):
         db_table = 'cantones'
 
 
-class EventosCantones(models.Model):
-    id = models.IntegerField(primary_key=True)
-    cod_cant = models.CharField(max_length=10, blank=True, null=True)
-    cod_mpio = models.CharField(max_length=10, blank=True, null=True)
-    id_event = models.CharField(max_length=10, blank=True, null=True)
-    fecha = models.DateField(blank=True, null=True)
-    cantones = models.CharField(max_length=50, blank=True, null=True)
-    evento = models.CharField(max_length=50, blank=True, null=True)
-    muertos = models.IntegerField(blank=True, null=True)
-    heridos = models.IntegerField(blank=True, null=True)
-    desaparecidos = models.IntegerField(blank=True, null=True)
-    personas = models.IntegerField(blank=True, null=True)
-    familias = models.IntegerField(blank=True, null=True)
-    viv_destruidas = models.IntegerField(blank=True, null=True)
-    viv_averiadas = models.IntegerField(blank=True, null=True)
-    vias = models.IntegerField(blank=True, null=True)
-    ptes_vehic = models.IntegerField(blank=True, null=True)
-    ptes_peat = models.IntegerField(blank=True, null=True)
-    acued = models.IntegerField(blank=True, null=True)
-    alcant = models.IntegerField(blank=True, null=True)
-    c_salud = models.IntegerField(blank=True, null=True)
-    c_educat = models.IntegerField(blank=True, null=True)
-    c_communi = models.IntegerField(blank=True, null=True)
-    hectareas = models.TextField(blank=True, null=True)  # This field type is a guess.
-    menajes = models.TextField(blank=True, null=True)  # This field type is a guess.
-    ap_aliment = models.TextField(blank=True, null=True)  # This field type is a guess.
-    tejas = models.TextField(blank=True, null=True)  # This field type is a guess.
-    sacos = models.TextField(blank=True, null=True)  # This field type is a guess.
-    otros_apoyo = models.TextField(blank=True, null=True)  # This field type is a guess.
-    economy = models.TextField(blank=True, null=True)  # This field type is a guess.
-    total = models.TextField(blank=True, null=True)  # This field type is a guess.
-    apoyos_tramite = models.TextField(blank=True, null=True)  # This field type is a guess.
-
-    class Meta:
-        managed = False
-        db_table = 'eventos_cantones'
-
 
 class Parroquias(models.Model):
     geom = models.MultiPolygonField(srid=32717, blank=True, null=True)
@@ -135,3 +98,57 @@ class Basicdat14(models.Model):
     class Meta:
         managed = False
         db_table = 'basicdat14'
+
+
+class Cantonal(models.Model):
+    codigo = models.IntegerField(primary_key=True)
+    nombre_canton = models.CharField(max_length=50, blank=True, null=True)
+    no_pobres_num = models.IntegerField(blank=True, null=True)
+    pobres_num = models.IntegerField(blank=True, null=True)
+    total_num = models.IntegerField(blank=True, null=True)
+    no_pobres_porc = models.FloatField(blank=True, null=True)
+    pobres_porc = models.FloatField(blank=True, null=True)
+    total_porc = models.FloatField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Cantón: {self.nombre_canton}"
+
+    class Meta:
+        managed = False
+        db_table = 'cantonal'
+
+
+class Parroquial(models.Model):
+    codigo = models.IntegerField(primary_key=True)
+    nombre_parroquia = models.CharField(max_length=50, blank=True, null=True)
+    no_pobres_num = models.IntegerField(blank=True, null=True)
+    pobres_num = models.IntegerField(blank=True, null=True)
+    total_num = models.IntegerField(blank=True, null=True)
+    no_pobres_porc = models.FloatField(blank=True, null=True)
+    pobres_porc = models.FloatField(blank=True, null=True)
+    total_porc = models.FloatField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Parroquia: {self.nombre_parroquia}"
+
+    class Meta:
+        managed = False
+        db_table = 'parroquial'
+
+
+class Provincial(models.Model):
+    codigo = models.IntegerField(primary_key=True)
+    nombre_provincia = models.CharField(max_length=50, blank=True, null=True)
+    no_pobres_num = models.IntegerField(blank=True, null=True)
+    pobres_num = models.IntegerField(blank=True, null=True)
+    total_num = models.IntegerField(blank=True, null=True)
+    no_pobres_porc = models.FloatField(blank=True, null=True)
+    pobres_porc = models.FloatField(blank=True, null=True)
+    total_porc = models.FloatField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Provincia: {self.nombre_provincia}"
+
+    class Meta:
+        managed = False
+        db_table = 'provincial'
