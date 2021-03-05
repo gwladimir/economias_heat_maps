@@ -1,0 +1,70 @@
+{% extends 'PobrezaHM/base.html' %}
+
+{% block title %}
+Mapa Ecuador
+{% endblock title %}
+
+{% block head %} 
+{% endblock head %}
+ 
+{% block content %} 
+<div class="container">
+    <div class="row">
+        <div class="col">
+              <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Provincias
+                </button>
+                <div class="dropdown-menu">
+                  {% for p in provin %}
+                  <a class="dropdown-item" href="#">{{ p.dpa_despro }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            
+        </div>
+        <div class="col">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle disabled btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Cantones
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item disabled" href="#">El Pangui</a>
+                </div>
+              </div>
+        </div>
+        <div class="col">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle disabled btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Parroquias
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Lican</a>
+                </div>
+              </div>
+        </div>
+        <div class="col">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Tipo
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Pobreza</a>
+                  <a class="dropdown-item" href="#">Elecciones Presidenciales</a>
+                </div>
+              </div>
+        </div>
+
+        
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-sm">Graficar</button>
+          </div>
+        
+      </div>
+ 
+    </div>
+    {{ mapa|safe }}
+        {% endblock content %}        
+
+{% block footer %}    
+{% endblock footer %}
